@@ -5,7 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Title }} {{ $event.year }}{{ end }}">
-        <link rel="icon" href="{{ "assets/favicon.jpg" | relURL }}">
+        <link rel="icon" type="image/png" href="{{ "assets/favicon.png" | relURL }}">
+        <link rel="apple-touch-icon" href="{{ "assets/apple-touch-icon.png" | relURL }}">
         <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
         <script src="{{ "js/site.js" | relURL }}" defer></script>
         <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · SBCC {{ $event.year }}{{ end }}</title>

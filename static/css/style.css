@@ -491,6 +491,19 @@ hr {
     text-align: center;
 }
 
+.about .club-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: rgba(84, 0, 177, 0.35);
+    transition: text-decoration-color 0.2s ease;
+}
+
+.about .club-link:hover {
+    text-decoration-color: currentColor;
+}
+
 .about section p {
     font-size: 1.15rem;
     line-height: 1.7;

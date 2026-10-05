@@ -1,7 +1,7 @@
 {{- $event := partialCached "event.html" . "event" -}}
 <footer>
     <nav id="bottom-nav" class="card">
-        <a class="brand" href="{{ "/" | relURL }}"><img src="{{ "assets/favicon.jpg" | relURL }}" alt="SBCC home" data-optional></a>
+        <a class="brand" href="{{ "/" | relURL }}"><img src="{{ "assets/favicon.png" | relURL }}" alt="SBCC home" data-optional></a>
         <a href="{{ "/" | relURL }}">Home</a>
         {{- range site.Menus.main }}
         <a href="{{ .URL }}">{{ .Name }}</a>

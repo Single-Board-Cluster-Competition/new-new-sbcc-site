@@ -24,9 +24,13 @@
 {{- $heading := delimit $parts " @ " -}}
 {{ if or $heading .club_description .club_link }}
 <section class="card">
-    {{ with $heading }}<h2>{{ . }}</h2>{{ end }}
+    {{- /* The heading links to the club's site; with a link but no names it reads "Club website" */}}
+    {{ with .club_link }}
+    <h2><a class="club-link" href="{{ . }}">{{ $heading | default "Club website" }}</a></h2>
+    {{ else }}{{ with $heading }}
+    <h2>{{ . }}</h2>
+    {{ end }}{{ end }}
     {{ with .club_description }}{{ . | $.RenderString (dict "display" "block") }}{{ end }}
-    {{ with .club_link }}<p><a href="{{ . }}">Visit the club's website ↗</a></p>{{ end }}
 </section>
 {{ end }}
 {{ end }}
