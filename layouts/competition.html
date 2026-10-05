@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{- $event := partialCached "event.html" . "event" -}}
+{{- $vars := $event.vars -}}
+{{- $site := $event.event.competition_site -}}
+
+<h1 class="display page-title">SBCC {{ $event.year }}</h1>
+<div class="lead center">{{ .Content }}</div>
+{{ with $site }}
+<p class="center">
+    <a class="btn" href="{{ . }}" target="_blank" rel="noopener">Go to the SBCC {{ $event.year }} site ↗</a>
+</p>
+{{ end }}
+
+{{- $when := $vars.dates -}}
+{{- if and $when $vars.location }}{{ $when = printf "%s, %s" $when $vars.location }}{{ end -}}
+{{- $facts := slice
+    (dict "label" "Competition" "value" $when)
+    (dict "label" "Sign-up deadline" "value" $vars.signup_deadline)
+    (dict "label" "Hardware proposal" "value" $vars.proposal_deadline)
+    (dict "label" "Power limit" "value" $vars.power_limit)
+    (dict "label" "Price limit" "value" $vars.price_limit)
+    (dict "label" "Team size" "value" $vars.team_size)
+-}}
+<section>
+    <h2>At a Glance</h2>
+    <dl class="facts">
+        {{ range $facts }}
+        {{ if .value }}
+        <div class="card">
+            <dt>{{ .label }}</dt>
+            <dd>{{ .value }}</dd>
+        </div>
+        {{ end }}
+        {{ end }}
+    </dl>
+</section>
+
+{{ with $site }}
+<section>
+    <h2>Preview</h2>
+    {{- /* Loaded on click: the embedded site scrolls the outer page when it loads */}}
+    <div class="site-preview card" data-embed="{{ . }}" data-embed-title="SBCC {{ $event.year }} competition website">
+        <button class="btn" type="button">Show preview</button>
+    </div>
+</section>
+{{ end }}
+{{ end }}

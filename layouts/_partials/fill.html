@@ -1,0 +1,6 @@
+{{- /* Replaces {name} placeholders in .text with values from .vars. */ -}}
+{{- $text := string .text -}}
+{{- range $key, $value := .vars -}}
+  {{- $text = replace $text (printf "{%s}" $key) (string $value) -}}
+{{- end -}}
+{{- return $text -}}

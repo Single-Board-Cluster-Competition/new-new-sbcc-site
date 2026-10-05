@@ -1,0 +1,11 @@
+# One file per university on the committee. Every field is optional.
+# weight: lower numbers are listed first (files without one go last, by filename).
+weight: 10
+university_name: University of California San Diego
+club_name: UCSD IEEE Supercomputing
+club_link: https://scc.sdsc.edu/
+club_email: ucsdsupercomputing@gmail.com
+club_description: >-
+  UCSD is a top-ranked public research university located in La Jolla, California.
+  The university is known for its world-class research in various fields including computer science, engineering, and mathematics.
+  Our team at UCSD comprises students and researchers who are working on cutting-edge projects in the field of high-performance computing.

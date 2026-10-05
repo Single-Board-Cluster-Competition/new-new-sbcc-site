@@ -1,0 +1,102 @@
+{{ define "main" }}
+{{- $event := partialCached "event.html" . "event" -}}
+{{- $data := $event.data -}}
+
+<section id="introduction">
+    <div>
+        <h1 class="display">{{ site.Title }}</h1>
+        {{ with .Params.intro }}<p class="lead">{{ . | markdownify }}</p>{{ end }}
+        {{ with $event.event.competition_site }}
+        <a class="btn" href="{{ . }}">Take a look at SBCC {{ $event.year }}!</a>
+        {{ end }}
+    </div>
+    {{ with .Params.hero }}
+    <figure>
+        <img src="{{ .src | relURL }}" alt="{{ .alt }}">
+        {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+    {{ end }}
+</section>
+
+{{ with $data.sponsors }}
+<section id="sponsors">
+    <h2>Sponsors</h2>
+    <div class="sponsors">
+        {{ range . }}
+        <a href="{{ .url }}"><img src="{{ .logo | relURL }}" alt="{{ .name }}"></a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ with .Content }}
+<section id="sbc-cluster" class="card text-card">
+    <h2>What is a SBC Cluster?</h2>
+    {{ . }}
+</section>
+{{ end }}
+
+{{ with $data.benchmarks }}
+<section id="bench-apps">
+    <h2>Benchmarks and Applications</h2>
+    {{ with $.Params.benchmarks_intro }}<p class="lead center">{{ . }}</p>{{ end }}
+    <div id="bench-apps-content">
+        {{ with $.Params.benchmarks_image }}
+        <figure>
+            <img src="{{ .src | relURL }}" alt="{{ .alt }}">
+            {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+        </figure>
+        {{ end }}
+        <div class="accordion">
+            {{ range . }}
+            <details class="card">
+                <summary>{{ .name }}</summary>
+                <div class="answer">
+                    {{ partial "fill.html" (dict "text" .description "vars" $event.vars) | markdownify }}
+                    {{ with .url }}<br>Link: <a href="{{ . }}">{{ . }}</a>{{ end }}
+                </div>
+            </details>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ with $data.faq }}
+<section id="faq">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    {{ with $.Params.faq_intro }}<p class="lead center">{{ . }}</p>{{ end }}
+    <div class="accordion">
+        {{ range . }}
+        <details class="card">
+            <summary>{{ partial "fill.html" (dict "text" .question "vars" $event.vars) }}</summary>
+            <div class="answer">
+                {{ partial "fill.html" (dict "text" .answer "vars" $event.vars) | $.RenderString }}
+            </div>
+        </details>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ with .Params.quote }}
+<section id="quote" class="card">
+    <blockquote>"{{ .text | markdownify }}"</blockquote>
+    <div class="quote-person">
+        {{ with .image }}<img src="{{ . | relURL }}" alt="">{{ end }}
+        <p>
+            {{ .name }}
+            {{ with .role }}<span>{{ . }}</span>{{ end }}
+        </p>
+    </div>
+</section>
+{{ end }}
+
+{{ with $event.event.register_url }}
+<section id="sign-up" class="card">
+    <h2>Ready to sign up?</h2>
+    <p>Everyone is welcome to join the competition, and be part of our community!</p>
+    <a class="btn" href="{{ . }}" target="_blank" rel="noopener">Sign up now</a>
+</section>
+{{ end }}
+{{ end }}

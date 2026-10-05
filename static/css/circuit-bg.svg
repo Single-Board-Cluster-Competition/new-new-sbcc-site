@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Seamless tile: the two buses leave and re-enter at the same y on opposite edges -->
+  <g fill="none" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 30 H50 L70 50 H130 L150 30 H200"/>
+    <path d="M0 170 H40 L60 150 H120 L140 170 H200"/>
+
+    <!-- chip and its pins -->
+    <rect x="80" y="80" width="40" height="40" rx="3"/>
+    <path d="M100 80 V50"/>
+    <path d="M100 120 V150"/>
+    <path d="M80 90 H60 L45 75"/>
+    <path d="M80 110 H55 L40 125 V140"/>
+    <path d="M120 90 H145 L160 75 V62"/>
+    <path d="M120 110 H150 L170 130"/>
+
+    <!-- loose traces -->
+    <path d="M15 60 V95 L25 105"/>
+    <path d="M185 85 V115 L175 125"/>
+    <path d="M10 195 L25 180"/>
+    <path d="M165 5 H185 L195 15"/>
+  </g>
+
+  <!-- pads -->
+  <g fill="#ffffff" stroke="#e4e4e7" stroke-width="2">
+    <circle cx="45" cy="75" r="3.5"/>
+    <circle cx="40" cy="140" r="3.5"/>
+    <circle cx="160" cy="59" r="3.5"/>
+    <circle cx="170" cy="130" r="3.5"/>
+    <circle cx="15" cy="57" r="3.5"/>
+    <circle cx="25" cy="105" r="3.5"/>
+    <circle cx="185" cy="82" r="3.5"/>
+    <circle cx="175" cy="125" r="3.5"/>
+    <circle cx="25" cy="180" r="3.5"/>
+    <circle cx="195" cy="15" r="3.5"/>
+  </g>
+
+  <!-- vias and bus junctions -->
+  <g fill="#e4e4e7">
+    <circle cx="100" cy="50" r="3"/>
+    <circle cx="100" cy="150" r="3"/>
+    <circle cx="90" cy="20" r="2.5"/>
+    <circle cx="190" cy="185" r="2.5"/>
+    <circle cx="60" cy="100" r="2.5"/>
+    <circle cx="140" cy="100" r="2.5"/>
+  </g>
+</svg>

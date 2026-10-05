@@ -1,0 +1,61 @@
+{{- /*
+  Loads data/<params.year>/ and returns:
+    year  – the year as a string
+    data  – everything in data/<year>/ (event, benchmarks, faq, sponsors)
+    event – data/<year>/event.yaml
+    vars  – {placeholder} values used by the "fill" partial
+  Call with partialCached "event.html" . "event".
+*/ -}}
+{{- $year := string site.Params.year -}}
+{{- $data := index hugo.Data $year -}}
+{{- if not $data -}}
+  {{- errorf "params.year is %s, but there is no data/%s/ folder" $year $year -}}
+{{- end -}}
+{{- $event := $data.event | default dict -}}
+
+{{- $vars := dict "year" $year "location" ($event.location | default "") -}}
+{{- range slice "power_limit" "price_limit" "team_size" -}}
+  {{- $vars = merge $vars (dict . (index $event . | default "")) -}}
+{{- end -}}
+
+{{- /* Each date may be YYYY-MM-DD or TBD; see the "date" partial */ -}}
+{{- $full := "January 2, 2006" -}}
+{{- with $event.dates -}}
+  {{- $start := partial "date.html" (dict "value" .start "field" "dates.start" "year" $year) -}}
+  {{- $end := partial "date.html" (dict "value" .end "field" "dates.end" "year" $year) -}}
+  {{- $range := "" -}}
+  {{- if $start.tbd -}}
+    {{- $range = "TBD" -}}
+  {{- else if $start.time -}}
+    {{- $s := $start.time -}}
+    {{- if $end.tbd -}}
+      {{- $range = printf "%s – TBD" ($s.Format $full) -}}
+    {{- else if $end.time -}}
+      {{- $e := $end.time -}}
+      {{- if eq ($s.Format "2006-01-02") ($e.Format "2006-01-02") -}}
+        {{- $range = $s.Format $full -}}
+      {{- else if eq ($s.Format "2006-01") ($e.Format "2006-01") -}}
+        {{- $range = printf "%s – %s" ($s.Format "January 2") ($e.Format "2, 2006") -}}
+      {{- else -}}
+        {{- $range = printf "%s – %s" ($s.Format "January 2") ($e.Format $full) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $range = $s.Format $full -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $range -}}
+    {{- $vars = merge $vars (dict "dates" .) -}}
+  {{- end -}}
+
+  {{- $dates := . -}}
+  {{- range $key := slice "signup_deadline" "proposal_deadline" -}}
+    {{- $d := partial "date.html" (dict "value" (index $dates $key) "field" (printf "dates.%s" $key) "year" $year) -}}
+    {{- if $d.tbd -}}
+      {{- $vars = merge $vars (dict $key "TBD") -}}
+    {{- else if $d.time -}}
+      {{- $vars = merge $vars (dict $key ($d.time.Format $full)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return dict "year" $year "data" $data "event" $event "vars" $vars -}}

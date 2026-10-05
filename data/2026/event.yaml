@@ -1,0 +1,17 @@
+# Facts for this year's competition. Each value is also available as a
+# {placeholder} in faq.yaml and benchmarks.yaml, e.g. {dates} or {power_limit}.
+register_url: https://forms.gle/pAEo8AmfPjFDCdcY8
+competition_site: https://single-board-cluster-competition.github.io/sbcc26-competition-site/
+# summary: Optional one-liner for this year's card on the History page.
+
+location: virtual
+# Dates are YYYY-MM-DD, or TBD while not yet decided.
+dates:
+  start: 2026-04-09
+  end: 2026-04-11
+  signup_deadline: 2026-02-02
+  proposal_deadline: 2026-02-23
+
+power_limit: 250 Watts
+price_limit: 6000 USD MSRP
+team_size: 4-8 members

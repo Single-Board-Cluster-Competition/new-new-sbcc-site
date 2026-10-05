@@ -1,0 +1,10 @@
+# One file per university on the committee. Every field is optional.
+# weight: lower numbers are listed first (files without one go last, by filename).
+weight: 20
+university_name: Aalborg University
+club_name: Aalborg Supercomputer Club
+club_link: https://aalborg.supercomputer.club/
+club_email: aalborgsupercomputerklub@gmail.com
+club_description: >-
+  The Super Computer Club of Aalborg University is a student organization based in Denmark that is dedicated to exploring the world of supercomputers and parallel computing.
+  The club provides students with opportunities to learn and develop their skills in high-performance computing by organizing workshops, hackathons, and other events.

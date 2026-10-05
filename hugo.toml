@@ -1,0 +1,34 @@
+baseURL = "https://sbcc.sdsc.edu"
+locale = "en"
+title = "Single Board Cluster Competition"
+disableKinds = ["taxonomy", "term", "rss", "sitemap"]
+# Rewrite root-relative URLs to relative ones so the output works from any
+# subpath (or straight from disk).
+relativeURLs = true
+
+[params]
+  # The competition year shown across the site. Everything year-specific
+  # (dates, links, benchmarks, FAQ, sponsors) is read from data/<year>/.
+  year = 2027
+  discord_url = "https://discord.gg/A4yjvrhKHe"
+  copyright = "Aalborg University Super Computer Club and University of California San Diego IEEE Supercomputer Club."
+  #credits = "Illustrations from Dall-e by OpenAI."
+
+[markup.goldmark.renderer]
+  # Lets content files use raw HTML (image rows, buttons).
+  unsafe = true
+
+[[menus.main]]
+  name = "Competition"
+  pageRef = "/competition"
+  weight = 10
+
+[[menus.main]]
+  name = "History"
+  pageRef = "/history"
+  weight = 20
+
+[[menus.main]]
+  name = "About Us"
+  pageRef = "/about-us"
+  weight = 30

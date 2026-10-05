@@ -1,0 +1,24 @@
+{{- /*
+  Reads one date from event.yaml. Call with dict "value" "field" "year".
+  Returns a dict:
+    {}            – the field is unset
+    {tbd: true}   – the value is TBD (any case)
+    {time: <t>}   – a YYYY-MM-DD date
+  Anything else stops the build with a message naming the field.
+*/ -}}
+{{- $out := dict -}}
+{{- with .value -}}
+  {{- $text := trim (printf "%v" .) " " -}}
+  {{- if eq (lower $text) "tbd" -}}
+    {{- $out = dict "tbd" true -}}
+  {{- else -}}
+    {{- with try (time.AsTime .) -}}
+      {{- if .Err -}}
+        {{- errorf "data/%s/event.yaml: %s is %q; use a YYYY-MM-DD date or TBD" $.year $.field $text -}}
+      {{- else -}}
+        {{- $out = dict "time" .Value -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

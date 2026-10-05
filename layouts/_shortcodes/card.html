@@ -1,0 +1,4 @@
+{{- /* Wraps Markdown in a card: {{< card >}} ... {{< /card >}} */ -}}
+<section class="card{{ with .Get "class" }} {{ . }}{{ end }}"{{ with .Get "id" }} id="{{ . }}"{{ end }}>
+{{ .Inner | .Page.RenderString (dict "display" "block") }}
+</section>

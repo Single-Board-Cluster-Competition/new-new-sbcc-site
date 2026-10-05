@@ -1,0 +1,26 @@
+- question: When and Where is it at?
+  answer: "{dates} ({location})."
+
+- question: What is the price limit for the hardware?
+  answer: "{price_limit}"
+
+- question: What is the power limit for the cluster?
+  answer: "{power_limit}"
+
+- question: When is the deadline for sign up?
+  answer: >-
+    The application deadline is {signup_deadline}.
+    Your real deadline is getting hardware, and setting it up in time.
+    After sign up you need to submit a proposal for the hardware you're going to use by {proposal_deadline}.
+
+- question: When is the deadline for sign up?
+  answer: >-
+    The application deadline is {signup_deadline}.
+    Your real deadline is getting hardware, and setting it up in time.
+    After sign up you need to submit a proposal for the hardware you're going to use by {proposal_deadline}.
+
+- question: Does the SBCC Committee purchase or provide hardware for the participating teams?
+  answer: >-
+    No, each team is expected to provide their own hardware.
+    The goal of the price limit is to encourage more hardware diversity.
+

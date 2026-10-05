@@ -1,0 +1,20 @@
+{{- $event := partialCached "event.html" . "event" -}}
+<footer>
+    <nav id="bottom-nav" class="card">
+        <a class="brand" href="{{ "/" | relURL }}"><img src="{{ "assets/favicon.jpg" | relURL }}" alt="SBCC home" data-optional></a>
+        <a href="{{ "/" | relURL }}">Home</a>
+        {{- range site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
+        {{- with site.Params.discord_url }}
+        <div class="follow">
+            <p>Follow Us</p>
+            <a href="{{ . }}">Discord</a>
+        </div>
+        {{- end }}
+    </nav>
+    <p>
+        Copyright © {{ $event.year }}. {{ site.Params.copyright }}
+        {{ site.Params.credits }}
+    </p>
+</footer>

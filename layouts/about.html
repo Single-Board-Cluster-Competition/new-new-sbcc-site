@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{- /* data/committee/*.yaml, ordered by weight then filename. Every field is optional. */ -}}
+{{- $members := slice -}}
+{{- range $file, $m := hugo.Data.committee -}}
+  {{- $m = $m | default dict -}}
+  {{- $order := printf "%012.3f/%s" (float ($m.weight | default 999999)) $file -}}
+  {{- $members = $members | append (merge $m (dict "order" $order)) -}}
+{{- end -}}
+{{- $members = sort $members "order" -}}
+
+{{- $universities := slice -}}
+{{- range $members }}{{ with .university_name }}{{ $universities = $universities | append . }}{{ end }}{{ end -}}
+
+<h1 class="display page-title">{{ .Title }}</h1>
+<div class="lead center">
+    {{ .Content }}
+    {{ with $universities }}<p>Our team includes members from {{ delimit . ", " " and " }}.</p>{{ end }}
+</div>
+
+{{ range $members }}
+{{- $parts := slice -}}
+{{- with .club_name }}{{ $parts = $parts | append . }}{{ end -}}
+{{- with .university_name }}{{ $parts = $parts | append . }}{{ end -}}
+{{- $heading := delimit $parts " @ " -}}
+{{ if or $heading .club_description .club_link }}
+<section class="card">
+    {{ with $heading }}<h2>{{ . }}</h2>{{ end }}
+    {{ with .club_description }}{{ . | $.RenderString (dict "display" "block") }}{{ end }}
+    {{ with .club_link }}<p><a href="{{ . }}">Visit the club's website ↗</a></p>{{ end }}
+</section>
+{{ end }}
+{{ end }}
+
+{{- $contacts := slice -}}
+{{- range $members }}{{ if .club_email }}{{ $contacts = $contacts | append . }}{{ end }}{{ end -}}
+{{ with $contacts }}
+<section class="card">
+    <h2>Contact Us</h2>
+    <ul>
+        {{ range . }}
+        {{- $who := .club_name | default .university_name -}}
+        <li>{{ with $who }}{{ . }}: {{ end }}<a href="mailto:{{ .club_email }}">{{ .club_email }}</a></li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}
+
+{{ with site.Params.discord_url }}
+<section id="sign-up" class="card">
+    <h2>Join our community</h2>
+    <p>Come chat with organizers and other teams on our Discord server.</p>
+    <a class="btn" href="{{ . }}">Join us on Discord ↗</a>
+</section>
+{{ end }}
+{{ end }}

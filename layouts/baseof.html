@@ -1,0 +1,20 @@
+{{- $event := partialCached "event.html" . "event" -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Title }} {{ $event.year }}{{ end }}">
+        <link rel="icon" href="{{ "assets/favicon.jpg" | relURL }}">
+        <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+        <script src="{{ "js/site.js" | relURL }}" defer></script>
+        <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · SBCC {{ $event.year }}{{ end }}</title>
+    </head>
+    <body>
+        {{ partial "nav.html" . }}
+        <main{{ with .Params.main_class }} class="{{ . }}"{{ end }}>
+            {{- block "main" . }}{{ end }}
+        </main>
+        {{ partial "footer.html" . }}
+    </body>
+</html>
