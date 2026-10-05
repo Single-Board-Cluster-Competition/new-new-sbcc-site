@@ -41,16 +41,16 @@ The Supercomputer Club at Aalborg University emerged as the winners of SBCC23.
 In the HPL benchmark, they delivered a 20-fold increase in GFLOPS compared to the second-place finisher.
 
 <div class="image-row">
-    <img src="/assets/Aalborg-University-Denmark.webp" alt="Aalborg University logo">
+    <img src="https://via.ritzau.dk/data/images/00455/5c98ebf3-db74-464e-8662-cf87266d55a5-w_960_h_960.png" alt="Aalborg University logo">
     <img src="/assets/AAU-sbcc2023.webp" alt="The Aalborg University team at SBCC 2023">
 </div>
 
 ### Participating Universities
 
 <div class="image-row">
-    <img src="/assets/Aalborg-University-Denmark.webp" alt="Aalborg University">
-    <img src="/assets/University-of-California-San-Diego.webp" alt="University of California San Diego">
-    <img src="/assets/pasadena.webp" alt="Pasadena City College">
+    <img src="https://via.ritzau.dk/data/images/00455/5c98ebf3-db74-464e-8662-cf87266d55a5-w_960_h_960.png" alt="Aalborg University">
+    <img src="https://logos-world.net/wp-content/uploads/2022/12/UCSD-Symbol-500x281.png" alt="University of California San Diego">
+    <img src="https://pasadena.edu/strategic-communications-and-marketing/guides-and-reference/brand/visual-style-guide/images/pcclogo.png" alt="Pasadena City College">
 </div>
 
 ### Sponsors
