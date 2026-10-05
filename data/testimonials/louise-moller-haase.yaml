@@ -1,7 +1,7 @@
 # One file per testimonial on the home page. Every field is optional.
 name: Louise Møller Haase
 role: Vice Dean, Aalborg University
-image: assets/Haase.png   # path inside static/
+image: https://media.licdn.com/dms/image/v2/C4E03AQEcPQzIddsBvg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1518615124054?e=1792627200&v=beta&t=aoYNYpMfsxvqGl1VIGU-SfmJg2fPUBrWaVlbWlR9KSc   # path inside static/
 weight: 10                # lower numbers are shown first (files without one go last, by filename)
 # Markdown; **bold** words are highlighted.
 quote: >-
