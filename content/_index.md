@@ -6,16 +6,7 @@ intro: >-
 benchmarks_intro: >-
   Participants will be required to run several benchmarks and applications to showcase their skills and the performance of their clusters.
   You can find more information about these benchmarks and applications, along with their requirements, on their respective websites.
-benchmarks_image:
-  src: assets/Dall-E.webp
-  alt: Illustration of super fast computers competing
-  caption: "Dall-E: Super fast computers competing"
 faq_intro: We will be updating this section with more questions and answers as they arise.
-quote:
-  text: This is an excellent opportunity to gain **hands-on experience** with **HPC**, enhancing technical skills and preparing for **industry** challenges.
-  name: Louise Møller Haase
-  role: Vice Dean, Aalborg University
-  image: assets/Haase.png
 ---
 
 <!-- Body: the "What is a SBC Cluster?" section. Benchmarks, FAQ and sponsors come from data/<year>/. -->

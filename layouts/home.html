@@ -13,8 +13,8 @@
     {{ with .Params.hero }}
     <figure>
         <img src="{{ .src | relURL }}" alt="{{ .alt }}">
-        {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
-    </figure>
+        {{ with .caption }}<figcaption>{{ . }}</div>{{ end }}
+    </div>
     {{ end }}
 </section>
 
@@ -44,8 +44,8 @@
         {{ with $.Params.benchmarks_image }}
         <figure>
             <img src="{{ .src | relURL }}" alt="{{ .alt }}">
-            {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
-        </figure>
+            {{ with .caption }}<figcaption>{{ . }}</div>{{ end }}
+        </div>
         {{ end }}
         <div class="accordion">
             {{ range . }}
@@ -79,16 +79,31 @@
 </section>
 {{ end }}
 
-{{ with .Params.quote }}
-<section id="quote" class="card">
-    <blockquote>"{{ .text | markdownify }}"</blockquote>
-    <div class="quote-person">
-        {{ with .image }}<img src="{{ . | relURL }}" alt="">{{ end }}
-        <p>
-            {{ .name }}
-            {{ with .role }}<span>{{ . }}</span>{{ end }}
-        </p>
+{{- /* data/testimonials/*.yaml, ordered by weight then filename */ -}}
+{{- $testimonials := slice -}}
+{{- range $file, $t := hugo.Data.testimonials -}}
+  {{- $t = $t | default dict -}}
+  {{- $order := printf "%012.3f/%s" (float ($t.weight | default 999999)) $file -}}
+  {{- $testimonials = $testimonials | append (merge $t (dict "order" $order)) -}}
+{{- end -}}
+{{ with sort $testimonials "order" }}
+<section class="testimonials">
+    {{ range . }}
+    {{ if or .quote .name .role .image }}
+    <div class="quote card">
+        {{ with .quote }}<blockquote>{{ . | $.RenderString (dict "display" "block") }}</blockquote>{{ end }}
+        {{ if or .name .role .image }}
+        <div class="quote-person">
+            {{ with .image }}<img src="{{ . | relURL }}" alt="">{{ end }}
+            <p>
+                {{ .name }}
+                {{ with .role }}<span>{{ . }}</span>{{ end }}
+            </p>
+        </div>
+        {{ end }}
     </div>
+    {{ end }}
+    {{ end }}
 </section>
 {{ end }}
 

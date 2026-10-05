@@ -1,12 +1,7 @@
 {{ define "main" }}
-{{- /* data/committee/*.yaml, ordered by weight then filename. Every field is optional. */ -}}
-{{- $members := slice -}}
-{{- range $file, $m := hugo.Data.committee -}}
-  {{- $m = $m | default dict -}}
-  {{- $order := printf "%012.3f/%s" (float ($m.weight | default 999999)) $file -}}
-  {{- $members = $members | append (merge $m (dict "order" $order)) -}}
-{{- end -}}
-{{- $members = sort $members "order" -}}
+{{- /* Current committee: data/committee/*.yaml. Previous: data/committee/prev-unis/*.yaml */ -}}
+{{- $members := partial "committee.html" hugo.Data.committee -}}
+{{- $previous := partial "committee.html" (index (hugo.Data.committee | default dict) "prev-unis") -}}
 
 {{- $universities := slice -}}
 {{- range $members }}{{ with .university_name }}{{ $universities = $universities | append . }}{{ end }}{{ end -}}
@@ -18,10 +13,7 @@
 </div>
 
 {{ range $members }}
-{{- $parts := slice -}}
-{{- with .club_name }}{{ $parts = $parts | append . }}{{ end -}}
-{{- with .university_name }}{{ $parts = $parts | append . }}{{ end -}}
-{{- $heading := delimit $parts " @ " -}}
+{{- $heading := .label -}}
 {{ if or $heading .club_description .club_link }}
 <section class="card">
     {{- /* The heading links to the club's site; with a link but no names it reads "Club website" */}}
@@ -44,6 +36,18 @@
         {{ range . }}
         {{- $who := .club_name | default .university_name -}}
         <li>{{ with $who }}{{ . }}: {{ end }}<a href="mailto:{{ .club_email }}">{{ .club_email }}</a></li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}
+
+{{ with $previous }}
+<section class="card">
+    <h2>Previous Committee Clubs</h2>
+    <ul>
+        {{ range . }}
+        {{- $name := .label | default .club_link -}}
+        {{ if $name }}<li>{{ with .club_link }}<a href="{{ . }}">{{ $name }}</a>{{ else }}{{ $name }}{{ end }}</li>{{ end }}
         {{ end }}
     </ul>
 </section>

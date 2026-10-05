@@ -11,7 +11,7 @@ relativeURLs = true
   # (dates, links, benchmarks, FAQ, sponsors) is read from data/<year>/.
   year = 2027
   discord_url = "https://discord.gg/A4yjvrhKHe"
-  copyright = "Aalborg University Super Computer Club and University of California San Diego IEEE Supercomputer Club."
+  copyright = "University of California San Diego IEEE Supercomputer Club."
   #credits = "Illustrations from Dall-e by OpenAI."
 
 [markup.goldmark.renderer]

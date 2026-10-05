@@ -1,0 +1,9 @@
+# One file per testimonial on the home page. Every field is optional.
+name: Louise Møller Haase
+role: Vice Dean, Aalborg University
+image: assets/Haase.png   # path inside static/
+weight: 10                # lower numbers are shown first (files without one go last, by filename)
+# Markdown; **bold** words are highlighted.
+quote: >-
+  This is an excellent opportunity to gain **hands-on experience** with **HPC**,
+  enhancing technical skills and preparing for **industry** challenges.

@@ -281,6 +281,12 @@ figcaption {
     flex: 1 1 320px;
 }
 
+/* No image beside the dropdowns: center them at the FAQ's width */
+#bench-apps-content > .accordion:only-child {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 /* Accordions (benchmarks + FAQ) */
 .accordion {
     display: flex;
@@ -343,14 +349,22 @@ figcaption {
 }
 
 /* Quote */
-#quote {
+/* Testimonials: one fills the row, several share it */
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 24px;
+}
+
+.quote {
     padding: 40px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 30px;
 }
 
-#quote blockquote {
+.quote blockquote {
     margin: 0;
     padding-left: 24px;
     border-left: 4px solid var(--accent);
@@ -359,7 +373,24 @@ figcaption {
     line-height: 1.6;
 }
 
-#quote blockquote b {
+.quote blockquote p {
+    margin: 0 0 0.75em;
+}
+
+.quote blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.quote blockquote > :first-child::before {
+    content: "\201C";
+}
+
+.quote blockquote > :last-child::after {
+    content: "\201D";
+}
+
+.quote blockquote b,
+.quote blockquote strong {
     color: var(--accent);
 }
 
@@ -662,7 +693,7 @@ footer > p {
         margin-left: 0;
     }
 
-    #quote,
+    .quote,
     .text-card,
     .about section {
         padding: 24px;

@@ -43,15 +43,36 @@ members from …" sentence. Every field is optional; missing ones are skipped.
     club_email: aalborgsupercomputerklub@gmail.com
     club_description: Markdown text…
 
+Clubs that used to be on the committee go in `data/committee/prev-unis/`, same
+format. They're listed under "Previous Committee Clubs" as links to `club_link`
+(only the name, link and weight are used there). To retire a club, move its file
+into that folder.
+
+## Testimonials
+
+Each testimonial on the home page is one file in `data/testimonials/`. Every
+field is optional:
+
+    name: Louise Møller Haase
+    role: Vice Dean, Aalborg University
+    image: assets/Haase.png   # path inside static/
+    weight: 10                # lower numbers are shown first
+    quote: >-
+      Markdown text; **bold** words are highlighted.
+
+One testimonial fills the row; several are laid out side by side.
+
 ## Other content
 
 | What                                  | Where                        |
 |---------------------------------------|------------------------------|
-| Home intro, images, quote, SBC blurb  | `content/_index.md`          |
+| Home intro, SBC blurb                 | `content/_index.md`          |
+| Home page testimonials                | `data/testimonials/*.yaml`   |
 | Competition page intro                | `content/competition.md`     |
 | History write-ups                     | `content/history.md`         |
 | About Us intro                        | `content/about-us.md`        |
 | Committee universities and clubs      | `data/committee/*.yaml`      |
+| Previous committee clubs              | `data/committee/prev-unis/*.yaml` |
 | Nav links                             | `[[menus.main]]` in `hugo.toml` |
 | Discord link, copyright line          | `[params]` in `hugo.toml`    |
 | Images                                | `static/assets/`             |

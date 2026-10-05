@@ -1,4 +1,4 @@
 # Logos live in static/; `logo` is a path relative to the site root.
 - name: ASML
   url: https://www.asml.com/
-  logo: https://en.wikipedia.org/wiki/File:ASML_Holding_N.V._logo.svg
+  logo: https://upload.wikimedia.org/wikipedia/en/6/6c/ASML_Holding_N.V._logo.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original

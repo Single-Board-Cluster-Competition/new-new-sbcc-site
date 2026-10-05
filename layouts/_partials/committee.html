@@ -1,0 +1,18 @@
+{{- /*
+  Turns a data folder of committee files (data/committee/ or
+  data/committee/prev-unis/) into a list ordered by weight, then filename.
+  Subfolders are skipped. Every field is optional; each entry also gets
+  `label`: "club_name @ university_name", or whichever of the two is set.
+*/ -}}
+{{- $members := slice -}}
+{{- range $file, $m := . -}}
+  {{- if ne $file "prev-unis" -}}
+    {{- $m = $m | default dict -}}
+    {{- $parts := slice -}}
+    {{- with $m.club_name }}{{ $parts = $parts | append . }}{{ end -}}
+    {{- with $m.university_name }}{{ $parts = $parts | append . }}{{ end -}}
+    {{- $order := printf "%012.3f/%s" (float ($m.weight | default 999999)) $file -}}
+    {{- $members = $members | append (merge $m (dict "order" $order "label" (delimit $parts " @ "))) -}}
+  {{- end -}}
+{{- end -}}
+{{- return sort $members "order" -}}
