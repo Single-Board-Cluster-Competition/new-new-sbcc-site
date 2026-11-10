@@ -8,6 +8,6 @@
     <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
     {{- end }}
     {{- with $event.event.register_url }}
-    <a class="btn register" href="{{ . }}" target="_blank" rel="noopener">Register ↗</a>
+    <span class="btn register" aria-disabled="true">Registration opens soon</span>
     {{- end }}
 </nav>

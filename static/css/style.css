@@ -1,13 +1,13 @@
 :root {
-    --bg-color: #ffffff;
-    --surface-color: #ffffff;
-    --text-color: #5400b1;
-    --muted-color: #5400b1;
+    --bg-color: #2D3142;
+    --surface-color: #4F5D75;
+    --text-color: #ffffff;
+    --muted-color: #ffffff;
     --shadow-color: rgba(84, 0, 177, 0.12);
-    --logo-color: #5400b1;
+    --logo-color: #ffffff;
     --accent: #5400b1;
     --accent-dark: #3d0082;
-    --link-color: #5400b1;
+    --link-color: #ffffff;
     --placeholder-bg: #f7f3fc;
 }
 
@@ -21,11 +21,23 @@ html {
 
 body {
     margin: 0;
-    background: var(--bg-color) url("circuit-bg.svg") repeat;
+    background: var(--bg-color) url("circuit-bg.svg?v=dark-green") repeat;
     background-size: 240px;
     color: var(--text-color);
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     line-height: 1.5;
+}
+
+h1,
+h2 {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
 }
 
 a {
@@ -39,6 +51,7 @@ img {
 
 .card {
     background: var(--surface-color);
+    color: var(--text-color);
     border-radius: 16px;
     box-shadow: 0 8px 24px var(--shadow-color);
 }
@@ -124,6 +137,9 @@ h1.display {
     padding: 10px 22px;
     font-size: 22px;
     color: #ffffff;
+    opacity: 0.55;
+    filter: grayscale(1);
+    cursor: not-allowed;
 }
 
 #top-nav .register:hover {
@@ -391,7 +407,7 @@ figcaption {
 
 .quote blockquote b,
 .quote blockquote strong {
-    color: var(--accent);
+    color: var(--text-color);
 }
 
 .quote-person {
@@ -425,6 +441,15 @@ figcaption {
 }
 
 /* Sign-up card */
+#sign-up .btn:disabled {
+    border: none;
+    font-family: inherit;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 #sign-up {
     padding: 32px 20px;
     text-align: center;
