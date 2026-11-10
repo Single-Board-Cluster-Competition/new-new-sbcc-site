@@ -1,14 +1,18 @@
+/* Dark surfaces with the lighter palette colors reserved for readable accents. */
 :root {
-    --bg-color: #ffffff;
-    --surface-color: #ffffff;
-    --text-color: #5400b1;
-    --muted-color: #5400b1;
-    --shadow-color: rgba(84, 0, 177, 0.12);
-    --logo-color: #5400b1;
-    --accent: #5400b1;
-    --accent-dark: #3d0082;
-    --link-color: #5400b1;
-    --placeholder-bg: #f7f3fc;
+    color-scheme: dark;
+    --bg-color: #272643;
+    --accent: #2c698d;
+    --accent-dark: #272643;
+    --surface-color: color-mix(in srgb, #272643 80%, #2c698d);
+    --text-color: #e3f6f5;
+    --muted-color: #bae8e8;
+    --shadow-color: rgba(0, 0, 0, 0.24);
+    --border-color: rgba(186, 232, 232, 0.18);
+    --accent-shadow: rgba(44, 105, 141, 0.35);
+    --logo-color: #ffffff;
+    --link-color: #bae8e8;
+    --placeholder-bg: #272643;
 }
 
 * {
@@ -21,15 +25,41 @@ html {
 
 body {
     margin: 0;
-    background: var(--bg-color) url("circuit-bg.svg") repeat;
+    background: var(--bg-color) url("circuit-bg.svg?v=dark-teal") repeat;
     background-size: 240px;
     color: var(--text-color);
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     line-height: 1.5;
+}
+
+h1,
+h2 {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
 }
 
 a {
     color: var(--link-color);
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+:focus-visible {
+    outline: 2px solid var(--muted-color);
+    outline-offset: 4px;
+}
+
+::selection {
+    background: var(--accent);
+    color: #ffffff;
 }
 
 img {
@@ -39,7 +69,9 @@ img {
 
 .card {
     background: var(--surface-color);
+    color: var(--text-color);
     border-radius: 16px;
+    border: 1px solid var(--border-color);
     box-shadow: 0 8px 24px var(--shadow-color);
 }
 
@@ -57,7 +89,7 @@ img {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(84, 0, 177, 0.35);
+    box-shadow: 0 8px 24px var(--accent-shadow);
 }
 
 /* Top navigation */
@@ -124,6 +156,9 @@ h1.display {
     padding: 10px 22px;
     font-size: 22px;
     color: #ffffff;
+    opacity: 0.55;
+    filter: grayscale(1);
+    cursor: not-allowed;
 }
 
 #top-nav .register:hover {
@@ -391,7 +426,7 @@ figcaption {
 
 .quote blockquote b,
 .quote blockquote strong {
-    color: var(--accent);
+    color: var(--text-color);
 }
 
 .quote-person {
@@ -425,6 +460,15 @@ figcaption {
 }
 
 /* Sign-up card */
+#sign-up .btn:disabled {
+    border: none;
+    font-family: inherit;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 #sign-up {
     padding: 32px 20px;
     text-align: center;
@@ -493,7 +537,7 @@ figcaption {
 
 hr {
     border: none;
-    border-top: 1px solid var(--shadow-color);
+    border-top: 1px solid var(--border-color);
     margin: 48px 0;
 }
 
@@ -527,7 +571,7 @@ hr {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
-    text-decoration-color: rgba(84, 0, 177, 0.35);
+    text-decoration-color: var(--accent-shadow);
     transition: text-decoration-color 0.2s ease;
 }
 
