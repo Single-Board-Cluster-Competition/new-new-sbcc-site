@@ -1,14 +1,18 @@
+/* Dark surfaces with the lighter palette colors reserved for readable accents. */
 :root {
-    --bg-color: #2D3142;
-    --surface-color: #4F5D75;
-    --text-color: #ffffff;
-    --muted-color: #ffffff;
-    --shadow-color: rgba(84, 0, 177, 0.12);
+    color-scheme: dark;
+    --bg-color: #272643;
+    --accent: #2c698d;
+    --accent-dark: #272643;
+    --surface-color: color-mix(in srgb, #272643 80%, #2c698d);
+    --text-color: #e3f6f5;
+    --muted-color: #bae8e8;
+    --shadow-color: rgba(0, 0, 0, 0.24);
+    --border-color: rgba(186, 232, 232, 0.18);
+    --accent-shadow: rgba(44, 105, 141, 0.35);
     --logo-color: #ffffff;
-    --accent: #5400b1;
-    --accent-dark: #3d0082;
-    --link-color: #ffffff;
-    --placeholder-bg: #f7f3fc;
+    --link-color: #bae8e8;
+    --placeholder-bg: #272643;
 }
 
 * {
@@ -21,7 +25,7 @@ html {
 
 body {
     margin: 0;
-    background: var(--bg-color) url("circuit-bg.svg?v=dark-green") repeat;
+    background: var(--bg-color) url("circuit-bg.svg?v=dark-teal") repeat;
     background-size: 240px;
     color: var(--text-color);
     font-family: 'JetBrains Mono', monospace;
@@ -44,6 +48,20 @@ a {
     color: var(--link-color);
 }
 
+a:hover {
+    color: #ffffff;
+}
+
+:focus-visible {
+    outline: 2px solid var(--muted-color);
+    outline-offset: 4px;
+}
+
+::selection {
+    background: var(--accent);
+    color: #ffffff;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -53,6 +71,7 @@ img {
     background: var(--surface-color);
     color: var(--text-color);
     border-radius: 16px;
+    border: 1px solid var(--border-color);
     box-shadow: 0 8px 24px var(--shadow-color);
 }
 
@@ -70,7 +89,7 @@ img {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(84, 0, 177, 0.35);
+    box-shadow: 0 8px 24px var(--accent-shadow);
 }
 
 /* Top navigation */
@@ -518,7 +537,7 @@ figcaption {
 
 hr {
     border: none;
-    border-top: 1px solid var(--shadow-color);
+    border-top: 1px solid var(--border-color);
     margin: 48px 0;
 }
 
@@ -552,7 +571,7 @@ hr {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
-    text-decoration-color: rgba(84, 0, 177, 0.35);
+    text-decoration-color: var(--accent-shadow);
     transition: text-decoration-color 0.2s ease;
 }
 

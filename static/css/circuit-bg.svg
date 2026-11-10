@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <!-- Seamless tile: the two buses leave and re-enter at the same y on opposite edges -->
-  <g fill="none" stroke="#145c3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#2c698d" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M0 30 H50 L70 50 H130 L150 30 H200"/>
     <path d="M0 170 H40 L60 150 H120 L140 170 H200"/>
 
@@ -21,7 +21,7 @@
   </g>
 
   <!-- pads -->
-  <g fill="#2D3142" stroke="#145c3d" stroke-width="2">
+  <g fill="#272643" stroke="#2c698d" stroke-opacity="0.45" stroke-width="2">
     <circle cx="45" cy="75" r="3.5"/>
     <circle cx="40" cy="140" r="3.5"/>
     <circle cx="160" cy="59" r="3.5"/>
@@ -35,7 +35,7 @@
   </g>
 
   <!-- vias and bus junctions -->
-  <g fill="#145c3d">
+  <g fill="#2c698d" fill-opacity="0.45">
     <circle cx="100" cy="50" r="3"/>
     <circle cx="100" cy="150" r="3"/>
     <circle cx="90" cy="20" r="2.5"/>
